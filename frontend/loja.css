@@ -37,6 +37,11 @@ body {
   display: none;
 }
 
+button > .hidden {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .shown {
   display: block;
 }

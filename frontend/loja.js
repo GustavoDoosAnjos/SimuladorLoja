@@ -157,6 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function showLoading() {
+    fetchProductsBtn.disabled = true
     document.querySelector('.buttonSpan').classList.remove('shown')
     document.querySelector('.buttonSpan').classList.add('hidden')
     document.querySelector('.loader').classList.remove('hidden')
@@ -164,6 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function hideLoading() {
+    fetchProductsBtn.disabled = false
     document.querySelector('.buttonSpan').classList.remove('hidden')
     document.querySelector('.buttonSpan').classList.add('shown')
     document.querySelector('.loader').classList.remove('shown')
@@ -171,6 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function showCheck(id) {
+    document.querySelector(`.id-${id}`).disabled = true
     document.querySelector(`.id-${id} > .cartText`).classList.remove('shown')
     document.querySelector(`.id-${id} > .cartText`).classList.add('hidden')
     document.querySelector(`.id-${id} > .check`).classList.remove('hidden')
@@ -178,6 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function hideCheck(id) {
+    document.querySelector(`.id-${id}`).disabled = false
     document.querySelector(`.id-${id} > .cartText`).classList.remove('hidden')
     document.querySelector(`.id-${id} > .cartText`).classList.add('shown')
     document.querySelector(`.id-${id} > .check`).classList.remove('shown')
