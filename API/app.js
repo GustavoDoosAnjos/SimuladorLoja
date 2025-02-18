@@ -22,10 +22,10 @@ app.get('/api/products', async (req, res) => {
       },
     });
 
-    res.status(200).send(await response.json());
+    res.status(200).json(await response.json());
   } catch (error) {
-    console.error('Error fetching products:', error.message);
-    res.status(500).json({ error: 'Failed to fetch products' });
+    console.error(error)
+    res.status(500).json({ error: 'Falha ao buscar produtos.' });
   }
 });
 
@@ -36,13 +36,12 @@ app.get('/api/cep/:cep', async (req, res) => {
 
     const response = await fetch(url);
 
-    res.json(await response.json());
+    res.status(200).json(await response.json());
   } catch (error) {
-    console.error('Error fetching CEP details:', error.message);
-    res.status(500).json({ error: 'Failed to fetch CEP details' });
+    res.status(500).json({ error: 'Falha ao buscar CEP' });
   }
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Listening on port ${PORT}`);
 });
