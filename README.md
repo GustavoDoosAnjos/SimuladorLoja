@@ -22,7 +22,6 @@ Este projeto é um simulador de loja que permite aos usuários filtrar produtos 
 4. Clique em "Adicionar ao carrinho" para adicionar um produto ao carrinho.
 5. Use os botões "+" e "-" no carrinho para ajustar a quantidade de itens.
 
-
 ## Tecnologias
 - **Frontend**: HTML, CSS, JavaScript, Bootstrap.
 - **Backend**: Node.js, Express.
