@@ -34,13 +34,15 @@ Este projeto é um simulador de loja que permite aos usuários filtrar produtos 
 1. Clone o repositório.
 2. Utilize a chave da API fornecida no teste para configurar o .env
 (O arquivo deve estar na mesma pasta e com o mesmo formato que o .env.example)
-3. SEM DOCKER:
-    3. Instale as dependências com `npm install`
-    4. Execute o servidor backend com `npm run start` (certifique-se de que ele está rodando em `http://localhost:3000`).
-    5. Abra `/frontend/index.html` no seu navegador.
-3. COM DOCKER:
-    3. Execute 'docker compose up'.
-    4. Abra `http://localhost:8080/loja.html` no navegador.
+
+SEM DOCKER:
+  - Instale as dependências com `npm install`
+  - Execute o servidor backend com `npm run start` (certifique-se de que ele está rodando em `http://localhost:3000`
+  - Abra `/frontend/index.html` no seu navegador.
+
+COM DOCKER:
+  - Execute 'docker compose up'.
+  - Abra `http://localhost:8080/loja.html` no navegador.
 
 ## Endpoints da API
 - `GET /api/products`: Busca todos os produtos.
