@@ -119,6 +119,12 @@ document.addEventListener('DOMContentLoaded', () => {
     renderCart()
   }
 
+  window.cleanCart = () => {
+    cart = []
+
+    renderCart()
+  }
+
   function renderCart() {
     cartItems.innerHTML = cart
       .map(

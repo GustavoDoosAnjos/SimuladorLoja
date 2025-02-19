@@ -2,6 +2,11 @@ body {
   font-family: Arial, sans-serif;
 }
 
+a {
+  cursor: pointer;
+  margin-right: 0.2rem;
+}
+
 #productList {
   display: flex;
   flex-wrap: wrap;
