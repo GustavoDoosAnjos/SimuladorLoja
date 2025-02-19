@@ -8,10 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
   let products = []
   let cart = []
 
+  const cepCache = new Map()
+
   fetchProductsBtn.addEventListener('click', async () => {
     showLoading()
-    const numberRegex = /^\d{5}-?\d{3}$/
     cepInput.value.replace('-', '')
+    const numberRegex = /^\d{5}-?\d{3}$/
     const cep = cepInput.value.trim().match(numberRegex)
 
     if (!cep) {
@@ -24,25 +26,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const data = await productsResponse.json()
 
     try {
-      const cepResponse = await fetch(`http://localhost:3000/api/cep/${cep}`)
-      const address = await cepResponse.json()
-      if (address.erro) {
-        alert('CEP inválido')
-        return
+      let address
+      if (cepCache.has(cep[0])) {
+        address = cepCache.get(cep[0])
+      } else {
+        const cepResponse = await fetch(`http://localhost:3000/api/cep/${cep}`)
+        address = await cepResponse.json()
+        if (address.erro) {
+          alert('CEP inválido')
+          return
+        }
+        cepCache.set(cep[0], address)
       }
 
       products = await Promise.all(
         data.items.map(async (product) => {
           const cepProduto = product.cep.replace('-', '')
-          try {
-            const productResponse = await fetch(`http://localhost:3000/api/cep/${cepProduto}`)
-            const enderecoProduto = await productResponse.json()
+          let enderecoProduto
 
-            if (enderecoProduto.uf === address.uf) {
-              return product
+          if (cepCache.has(cepProduto)) {
+            enderecoProduto = cepCache.get(cepProduto)
+          } else {
+            try {
+              const productResponse = await fetch(`http://localhost:3000/api/cep/${cepProduto}`)
+              enderecoProduto = await productResponse.json()
+              cepCache.set(cepProduto, enderecoProduto)
+            } catch (error) {
+              console.error(`Erro ao buscar dados do produto ${product.id}:`, error)
             }
-          } catch (error) {
-            console.error(`Erro ao buscar dados do produto ${product.id}:`, error)
+          }
+
+          if (enderecoProduto && enderecoProduto.uf === address.uf) {
+            return product
           }
           return null
         })

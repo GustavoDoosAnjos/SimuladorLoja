@@ -6,7 +6,8 @@
 Este projeto é um simulador de loja que permite aos usuários filtrar produtos com base no seu CEP e adicionar produtos a um carrinho.
 
 ## Pré-requisitos
-- Node.js caso queira rodar o projeto localmente ou Docker caso queira rodar o projeto em um container.
+- Node.js caso queira rodar o projeto localmente
+- Docker caso queira rodar o projeto em um container.
 
 ## Funcionalidades
 - Buscar produtos de uma API.
