@@ -12,9 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   fetchProductsBtn.addEventListener('click', async () => {
     showLoading()
-    cepInput.value.replace('-', '')
+    const sanitizedInput = cepInput.value
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace('-', '')
     const numberRegex = /^\d{5}-?\d{3}$/
-    const cep = cepInput.value.trim().match(numberRegex)
+    const cep = sanitizedInput.trim().match(numberRegex)
 
     if (!cep) {
       alert('Digite um CEP válido')
