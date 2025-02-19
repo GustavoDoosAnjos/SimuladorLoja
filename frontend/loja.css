@@ -7,6 +7,15 @@ a {
   margin-right: 0.2rem;
 }
 
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cartButton {
+  width: 4rem;
+}
+
 #productList {
   display: flex;
   flex-wrap: wrap;
