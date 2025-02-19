@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <h3>${product.name}</h3>
             <p>${product.desc}</p>
             <p><strong>Preço:</strong> ${product.pricing.price_usd}</p>
-            <p><strong>cep:</strong> ${product.cep}</p>
+            <p><strong>CEP:</strong> ${product.cep}</p>
             <button class="adicionarAoCarrinho btn btn-success btn-sm id-${product.id}" onclick="addToCart('${product.id}')">
               <span class="cartText">Adicionar ao carrinho</span>
               <span class="check hidden">Adicionado!</span>

@@ -10,6 +10,16 @@ app.use(json());
 
 const API_KEY = process.env.API_KEY
 
+app.get('/', (req, res) => {
+  const data = {
+    uptime: process.uptime(),
+    message: 'Ok',
+    date: new Date(),
+  };
+
+  res.status(200).send('Application health check: ' + data);
+})
+
 app.get('/api/products', async (req, res) => {
   try {
     const { keyword } = req.query;
